@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<div class="card">
+                <div class="card body">
+                    <div class="card-title">
+                        <h5>{{detailtask.name}}</h5>
+                        <p><b>{{detailtask.priority}}</b></p>
+                        <p><b>{{detailtask.date}}</b></p>
+                        <a class="btn btn-danger" href="{% url 'delete' detailtask.id %}">Done</a>
+                        <a class="btn btn-success" href="{% url 'update' detailtask.id %}">Update</a>
+                    </div>
+                </div>
+{% endblock %}
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for i in detail_task_key %}
+{{i.name}}
+{{i.priority}}<br>
+{% endfor %}
+</body>
+</html>-->

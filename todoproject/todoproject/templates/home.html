@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block body %}<!--block content ,we can use this one instead of blockbody-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="banner">
+                <div class="banner-text">
+                       <h1>ToDo</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+        <form method="POST" class="p-3 shadow">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" class="form-control" name="taskname" placeholder="taskname">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="priority" placeholder="Enter your priority">
+            </div>
+            <div class="form-group">
+                <input type="date" class="form-control" name="date" placeholder="Enter date here">
+            </div>
+            <div>
+                <input type="submit" class="btn btn-success">
+
+            </div>
+        </form>
+            </div>
+        <div class="col-md-6">
+            <h1>Completed Task List</h1>
+            {% for i in detail_task_key %}
+            <div class="card">
+                <div class="card body">
+                    <div class="card-title">
+                        <h5>{{i.name}}</h5>
+                        <p><b>{{i.priority}}</b></p>
+                        <p><b>{{i.date}}</b></p>
+                        <a class="btn btn-danger" href="{% url 'delete' i.id %}">Done</a>
+                        <a class="btn btn-success" href="{% url 'update' i.id %}">Update</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="taskname" placeholder="taskname">
+    <input type="text" name="priority" placeholder="Enter your priority">
+    <input type="submit">
+
+</form>-->
+{% endblock %}

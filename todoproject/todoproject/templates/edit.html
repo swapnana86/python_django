@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block body %}
+<form method="POST">
+    {% csrf_token %}
+    {{ form_key.as_p }}
+
+    <input type="submit">
+   <!-- <button type="submit">Confirm</button> Button like this-->
+</form>
+{% endblock %}
